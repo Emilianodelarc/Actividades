@@ -4,40 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Actividades</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; padding: 24px 16px; font-family: "Source Sans 3", SourceSansPro, sans-serif; background: #F7F7F7; color: #222; }
-    main { max-width: 900px; margin: 0 auto; }
-    h1 { font-size: 28px; }
-    .card { background: #FFF; border: 1px solid #DDD; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
-    .langs button { font-size: 15px; padding: 6px 12px; margin-right: 6px; border: 1px solid #CCC; border-radius: 4px; background: #FFF; cursor: pointer; }
-    .langs button.activo { background: #1E3A5F; color: #FFF; border-color: #1E3A5F; }
-    iframe { width: 100%; height: 640px; border: 1px solid #DDD; border-radius: 6px; margin-top: 12px; background: #FFF; }
+    :root { --bg:#F4F6F9; --panel:#FFF; --text:#1F2933; --muted:#5F6B7A; --border:#D8DEE6; --accent:#1E3A5F; }
+    * { box-sizing: border-box; }
+    body { margin:0; padding:24px 16px; font-family:"Source Sans 3", SourceSansPro, sans-serif; background:var(--bg); color:var(--text); }
+    main { max-width:1200px; margin:0 auto; }
+    h1 { font-size:28px; margin:0 0 4px; }
+    .sub { color:var(--muted); margin:0 0 20px; }
+    .barra { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:20px; }
+    .seg { display:inline-flex; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:var(--panel); }
+    .seg button { font:inherit; font-size:15px; padding:6px 14px; border:0; background:none; cursor:pointer; color:var(--text); }
+    .seg button.activo { background:var(--accent); color:#FFF; }
+    .curso { margin-bottom:28px; }
+    .curso h2 { font-size:22px; margin:0 0 4px; }
+    .curso p { margin:0 0 12px; color:var(--muted); }
+    .act { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:12px 16px; margin-bottom:12px; }
+    .act summary { cursor:pointer; font-weight:700; font-size:17px; }
+    .act-cuerpo { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.6fr); gap:12px; margin-top:12px; }
+    @media (max-width:900px) { .act-cuerpo { grid-template-columns:1fr; } }
+    .act-cuerpo .etq { font-size:13px; color:var(--muted); margin:0 0 4px; }
+    .act-cuerpo .etq a { color:var(--accent); }
+    iframe { width:100%; border:1px solid var(--border); border-radius:6px; background:#FFF; }
+    iframe.consigna { height:640px; }
+    iframe.actividad { height:760px; }
   </style>
 </head>
 <body>
   <main>
     <h1>Actividades</h1>
-    <div class="card" data-actividad="01-mi-primer-header">
-      <h2>01 · Mi primer header</h2>
-      <div class="langs">
+    <p class="sub">Cada actividad tiene su consigna y su editor de código, en tres idiomas.</p>
+    <div class="barra">
+      <div class="seg" id="idiomas">
         <button data-lang="es" class="activo">Español</button>
         <button data-lang="en">English</button>
         <button data-lang="pt">Português</button>
       </div>
-      <iframe src="01-mi-primer-header/es/index.html" title="Actividad 01"></iframe>
     </div>
+    <div id="cursos"></div>
   </main>
+  <script src="catalogo.js"></script>
   <script>
-    document.querySelectorAll('.card').forEach(card => {
-      const iframe = card.querySelector('iframe');
-      card.querySelectorAll('.langs button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          card.querySelectorAll('.langs button').forEach(b => b.classList.remove('activo'));
-          btn.classList.add('activo');
-          iframe.src = `${card.dataset.actividad}/${btn.dataset.lang}/index.html`;
+    var lang = "es";
+    function t(v) { return v && typeof v === "object" ? (v[lang] || v.es || "") : (v || ""); }
+    function render() {
+      var cont = document.getElementById("cursos");
+      cont.textContent = "";
+      (window.CATALOGO || []).forEach(function (c) {
+        var sec = document.createElement("section");
+        sec.className = "curso";
+        sec.innerHTML = "<h2></h2><p></p>";
+        sec.querySelector("h2").textContent = t(c.titulo);
+        sec.querySelector("p").textContent = t(c.descripcion);
+        c.actividades.forEach(function (a, i) {
+          var base = "cursos/" + c.id + "/" + a.id + "/" + lang + "/";
+          var d = document.createElement("details");
+          d.className = "act";
+          if (i === 0) d.open = true;
+          d.innerHTML = '<summary></summary><div class="act-cuerpo">' +
+            '<div><p class="etq">Consigna · <a target="_blank"></a></p><iframe class="consigna" loading="lazy"></iframe></div>' +
+            '<div><p class="etq">Actividad · <a target="_blank"></a></p><iframe class="actividad" loading="lazy"></iframe></div></div>';
+          d.querySelector("summary").textContent = a.id.slice(0, 2) + " · " + t(a.titulo);
+          var links = d.querySelectorAll(".etq a");
+          links[0].href = base + "consigna.html"; links[0].textContent = base + "consigna.html";
+          links[1].href = base + "index.html"; links[1].textContent = base + "index.html";
+          d.querySelector("iframe.consigna").src = base + "consigna.html";
+          d.querySelector("iframe.actividad").src = base + "index.html";
+          sec.appendChild(d);
         });
+        cont.appendChild(sec);
       });
+    }
+    document.getElementById("idiomas").addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      lang = b.dataset.lang;
+      this.querySelectorAll("button").forEach(function (x) { x.classList.toggle("activo", x === b); });
+      render();
     });
+    render();
   </script>
 </body>
 </html>

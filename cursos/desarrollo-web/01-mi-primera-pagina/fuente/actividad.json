@@ -1,0 +1,57 @@
+{
+  "titulo": {
+    "es": "Mi primera página web",
+    "en": "My first web page",
+    "pt": "Minha primeira página web"
+  },
+  "archivos": ["html"],
+  "verificaciones": [
+    {
+      "tipo": "texto", "selector": "title",
+      "valor": { "es": "Mi página web", "en": "My web page", "pt": "Minha página web" },
+      "mensaje": {
+        "es": "El <title> dice «Mi página web».",
+        "en": "The <title> says “My web page”.",
+        "pt": "O <title> diz “Minha página web”."
+      }
+    },
+    {
+      "tipo": "existe", "selector": "body h1",
+      "mensaje": {
+        "es": "Hay un <h1> dentro del <body>.",
+        "en": "There is an <h1> inside the <body>.",
+        "pt": "Há um <h1> dentro do <body>."
+      }
+    },
+    {
+      "tipo": "texto", "selector": "h1",
+      "valor": { "es": "¡Hola, mundo!", "en": "Hello, world!", "pt": "Olá, mundo!" },
+      "mensaje": {
+        "es": "El <h1> dice «¡Hola, mundo!».",
+        "en": "The <h1> says “Hello, world!”.",
+        "pt": "O <h1> diz “Olá, mundo!”."
+      }
+    },
+    {
+      "tipo": "existe", "selector": "h1 + p",
+      "mensaje": {
+        "es": "Hay un <p> justo debajo del <h1>.",
+        "en": "There is a <p> right below the <h1>.",
+        "pt": "Há um <p> logo abaixo do <h1>."
+      }
+    },
+    {
+      "tipo": "texto", "selector": "h1 + p",
+      "contiene": {
+        "es": "Esta es mi primera página web",
+        "en": "This is my first web page",
+        "pt": "Esta é a minha primeira página web"
+      },
+      "mensaje": {
+        "es": "El párrafo tiene el texto indicado.",
+        "en": "The paragraph has the given text.",
+        "pt": "O parágrafo tem o texto indicado."
+      }
+    }
+  ]
+}

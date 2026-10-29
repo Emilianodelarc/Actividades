@@ -1,0 +1,65 @@
+{
+  "titulo": {
+    "es": "Mi primer header",
+    "en": "My first header",
+    "pt": "Meu primeiro header"
+  },
+  "archivos": ["html", "css"],
+  "heredarDe": "01-mi-primera-pagina",
+  "verificaciones": [
+    {
+      "tipo": "existe", "selector": "body > header",
+      "mensaje": {
+        "es": "Hay un <header> dentro del <body>.",
+        "en": "There is a <header> inside the <body>.",
+        "pt": "Há um <header> dentro do <body>."
+      }
+    },
+    {
+      "tipo": "texto", "selector": "header h1",
+      "valor": { "es": "Mi página web", "en": "My web page", "pt": "Minha página web" },
+      "mensaje": {
+        "es": "El <h1> está dentro del <header> y dice «Mi página web».",
+        "en": "The <h1> is inside the <header> and says “My web page”.",
+        "pt": "O <h1> está dentro do <header> e diz “Minha página web”."
+      }
+    },
+    {
+      "tipo": "texto", "selector": "header p",
+      "contiene": {
+        "es": "Bienvenidos a mi primer sitio web",
+        "en": "Welcome to my first website",
+        "pt": "Bem-vindos ao meu primeiro site"
+      },
+      "mensaje": {
+        "es": "El <p> está dentro del <header> con el texto nuevo.",
+        "en": "The <p> is inside the <header> with the new text.",
+        "pt": "O <p> está dentro do <header> com o texto novo."
+      }
+    },
+    {
+      "tipo": "estilo", "selector": "header", "propiedad": "background-color", "valor": "#1E3A5F",
+      "mensaje": {
+        "es": "El <header> tiene fondo azul (#1E3A5F).",
+        "en": "The <header> has a blue background (#1E3A5F).",
+        "pt": "O <header> tem fundo azul (#1E3A5F)."
+      }
+    },
+    {
+      "tipo": "estilo", "selector": "header", "propiedad": "color", "valor": "#FFFFFF",
+      "mensaje": {
+        "es": "El texto del <header> es blanco.",
+        "en": "The <header> text is white.",
+        "pt": "O texto do <header> é branco."
+      }
+    },
+    {
+      "tipo": "estilo", "selector": "header", "propiedad": "padding-top", "valor": "20px",
+      "mensaje": {
+        "es": "El <header> tiene 20px de relleno (padding).",
+        "en": "The <header> has 20px of padding.",
+        "pt": "O <header> tem 20px de preenchimento (padding)."
+      }
+    }
+  ]
+}

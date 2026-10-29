@@ -1,0 +1,12 @@
+{
+  "titulo": {
+    "es": "Desarrollo web: primeros pasos",
+    "en": "Web development: first steps",
+    "pt": "Desenvolvimento web: primeiros passos"
+  },
+  "descripcion": {
+    "es": "Estructura de una página con HTML y primeros estilos con CSS.",
+    "en": "Page structure with HTML and first styles with CSS.",
+    "pt": "Estrutura de uma página com HTML e primeiros estilos com CSS."
+  }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha primeira página web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="../../../../assets/editor.css">
+</head>
+<body>
+  <div class="act">
+    <header class="act-top">
+      <h1 id="act-titulo"></h1>
+      <div class="act-acciones">
+        <button class="btn" id="btn-inherit" type="button" hidden></button>
+        <button class="btn" id="btn-reset" type="button"></button>
+        <button class="btn" id="btn-run" type="button"></button>
+        <button class="btn btn-primario" id="btn-check" type="button"></button>
+      </div>
+    </header>
+    <div class="act-main">
+      <section class="panel">
+        <div class="tabs" id="tabs-editor"><span class="tab-info" id="tab-info"></span></div>
+        <div class="editor-host" id="editor-host"></div>
+      </section>
+      <section class="panel">
+        <div class="tabs" id="tabs-preview">
+          <button class="tab activo" id="tab-preview" type="button"></button>
+          <button class="tab" id="tab-console" type="button"></button>
+        </div>
+        <iframe class="preview-frame" id="preview" title="preview"></iframe>
+        <pre class="consola oculto" id="consola"></pre>
+      </section>
+    </div>
+    <section class="resultados" aria-live="polite">
+      <h2 id="res-titulo"></h2>
+      <p class="vacio" id="res-vacio"></p>
+      <ul id="res-lista"></ul>
+      <p class="resumen" id="res-resumen"></p>
+    </section>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/xml-fold.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script>
+window.ACTIVIDAD = {
+  "id": "desarrollo-web/01-mi-primera-pagina",
+  "lang": "pt",
+  "titulo": "Minha primeira página web",
+  "archivos": [
+    "html"
+  ],
+  "heredarDe": null,
+  "inicial": {
+    "html": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title><\/title>\n<\/head>\n<body>\n\n<\/body>\n<\/html>\n"
+  },
+  "verificaciones": [
+    {
+      "tipo": "texto",
+      "selector": "title",
+      "valor": {
+        "es": "Mi página web",
+        "en": "My web page",
+        "pt": "Minha página web"
+      },
+      "mensaje": {
+        "es": "El <title> dice «Mi página web».",
+        "en": "The <title> says “My web page”.",
+        "pt": "O <title> diz “Minha página web”."
+      }
+    },
+    {
+      "tipo": "existe",
+      "selector": "body h1",
+      "mensaje": {
+        "es": "Hay un <h1> dentro del <body>.",
+        "en": "There is an <h1> inside the <body>.",
+        "pt": "Há um <h1> dentro do <body>."
+      }
+    },
+    {
+      "tipo": "texto",
+      "selector": "h1",
+      "valor": {
+        "es": "¡Hola, mundo!",
+        "en": "Hello, world!",
+        "pt": "Olá, mundo!"
+      },
+      "mensaje": {
+        "es": "El <h1> dice «¡Hola, mundo!».",
+        "en": "The <h1> says “Hello, world!”.",
+        "pt": "O <h1> diz “Olá, mundo!”."
+      }
+    },
+    {
+      "tipo": "existe",
+      "selector": "h1 + p",
+      "mensaje": {
+        "es": "Hay un <p> justo debajo del <h1>.",
+        "en": "There is a <p> right below the <h1>.",
+        "pt": "Há um <p> logo abaixo do <h1>."
+      }
+    },
+    {
+      "tipo": "texto",
+      "selector": "h1 + p",
+      "contiene": {
+        "es": "Esta es mi primera página web",
+        "en": "This is my first web page",
+        "pt": "Esta é a minha primeira página web"
+      },
+      "mensaje": {
+        "es": "El párrafo tiene el texto indicado.",
+        "en": "The paragraph has the given text.",
+        "pt": "O parágrafo tem o texto indicado."
+      }
+    }
+  ]
+};
+  </script>
+  <script src="../../../../assets/editor.js"></script>
+</body>
+</html>
