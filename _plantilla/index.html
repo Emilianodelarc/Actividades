@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TÍTULO DE LA ACTIVIDAD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; padding: 16px; background: #FFFFFF; color: #222; font-family: SourceSansPro, "Source Sans 3", sans-serif; }
+  </style>
+</head>
+<body>
+  <div>
+    <style>
+        #consigna-schools p, #consigna-schools li {font-size:18px;}
+        #consigna-schools h2{font-family: SourceSansPro, sans-serif; font-size: 24px; font-weight: bold;}
+        #consigna-schools h3{font-family: SourceSansPro, sans-serif; font-size: 18px; font-weight: bold;}
+        #consigna-schools p.copy-warning{font-style: italic; font-weight:bold;}
+        #consigna-schools p.contexto-consigna{font-style: italic;}
+        #consigna-schools .texto-copiable{padding:2px; background-color: #E0E0E0; border: 1px solid #D9D9D9; font-size: 15px; color: #222; font-style:italic;}
+        #consigna-schools input.texto-copiable{text-align:center;}
+    </style>
+    <article id="consigna-schools">
+      <!-- 1. Título: h2 (cursiva <i> para resaltar) -->
+      <h2>Título de la <i>actividad</i></h2>
+
+      <!-- 2. Contexto / introducción -->
+      <p class="contexto-consigna">Introducción o contexto de la actividad...</p>
+
+      <!-- 3. (Opcional) Aviso de copiar código previo -->
+      <p class="copy-warning">Antes de comenzar, copia y pega el código del paso anterior.</p>
+
+      <!-- 4. Dónde trabajar: h3 (variar el texto) -->
+      <h3>En tu HTML:</h3>
+
+      <!-- 5. Pasos: ul (anidar ul para subpasos). Resaltar con <b> -->
+      <ul>
+        <li>Paso principal. Dentro:</li>
+        <ul>
+          <li>Subpaso. Copia y pega el siguiente texto: <input class="texto-copiable" size="12" value="Texto corto" disabled></li>
+        </ul>
+      </ul>
+
+      <!-- 6. Texto largo para copiar -->
+      <p class="texto-copiable">Texto largo para copiar...</p>
+
+      <!-- 7. Código para copiar: pegar aquí el bloque copiado del editor de PG -->
+    </article>
+  </div>
+</body>
+</html>
